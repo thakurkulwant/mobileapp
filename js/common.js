@@ -709,23 +709,7 @@
 	});
 	
 	 /**************Add inventory**************/	
-     		$('#chs_pic').click(function (){
-     window.imagePicker.getPictures(
-	function(results) {
-		for (var i = 0; i < results.length; i++) 
-        {
-			console.log('Image URI: ' + results[i]);
-		}
-	}, function (error) {
-		console.log('Error: ' + error);
-	}
-);
-
-		});
-        
-
-
-		 $("#add_inventory").submit(function(e){
+  		 $("#add_inventory").submit(function(e){
          
 			 $("#wek_form").hide();
 			 $("#my_daily").hide();
