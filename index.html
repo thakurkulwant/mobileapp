@@ -300,7 +300,16 @@
 			</div>
 			<!-- Add inventory form-->
 			<div class="add_invt">
-				<form id="add_inventory111" class="form-horizontal" role="form">
+            
+                <button onclick="capturePhoto();">Capture Photo</button> <br><br>
+    <button onclick="capturePhotoEdit();">Capture Editable Photo</button> <br><br>
+    <button onclick="getPhoto(pictureSource.PHOTOLIBRARY);">From Photo Library</button><br><br>
+    <button onclick="getPhoto(pictureSource.SAVEDPHOTOALBUM);">From Photo Album</button><br><br>
+    <img style="display:none;width:60px;height:60px;" id="smallImage" src="" /><br><br>
+    <img style="display:none;" id="largeImage" src="" />
+    
+    
+				<!---form id="add_inventory" class="form-horizontal" role="form">
 					<div class="col-sm-12">
 						<div class="col-sm-12 col-xs-12 control_fld">
 							<div class="nme_fld crp_img">
@@ -312,24 +321,17 @@
 								<input type="text" placeholder="Name of Item" name="item_nme" class="inp_st" id="st_name" required>
 							</div>
 						</div>
-						<div class="col-sm-6 col-xs-6 control_fld">
-                            <button onclick="capturePhoto();">Capture Photo</button> <br>
-                            <button onclick="capturePhotoEdit();">Capture Editable Photo</button> <br>
-                            <button onclick="getPhoto(pictureSource.PHOTOLIBRARY);">From Photo Library</button><br>
-                            <button onclick="getPhoto(pictureSource.SAVEDPHOTOALBUM);">From Photo Album</button><br>
-                            <img style="display:none;width:60px;height:60px;" id="smallImage" src="" />
-                            <img style="display:none;" id="largeImage" src="" />
-    
-							<!--div class="nme_fld">
+						<div class="col-sm-6 col-xs-6 control_fld">     
+							<div class="nme_fld">
 								<input type="button" value="Take Photo" name="tk_pht" class="inp_st pht_tk" id="tk_pic">
 								<img id="photoHolder"> 
-							</div--->
+							</div>
 						</div>
-						<!--div class="col-sm-6 col-xs-6 control_fld">
+						<div class="col-sm-6 col-xs-6 control_fld">
 							<div class="nme_fld">
 								<input type="button" value="Choose From Library" name="lib_img" class="inp_st pht_tk" id="chs_pic">
 							</div>
-						</div-->
+						</div>
 						<div class="col-sm-12 col-xs-12 control_fld">
 							<div class="nme_fld">
 								<input type="text" placeholder="Beacon UUID" name="bcan" class="inp_st" id="int_beon" required>
@@ -342,7 +344,7 @@
 							</div>
 						</div>
 					</div>
-				</form>
+				</form--->
 			</div>
 			<!-- end -->
 			<!-- Add inventory-->
