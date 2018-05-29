@@ -708,8 +708,25 @@
 			
 	});
 	
-	 /**************Add inventory**************/		
+	 /**************Add inventory**************/	
+     		$('#chs_pic').click(function (){
+     window.imagePicker.getPictures(
+	function(results) {
+		for (var i = 0; i < results.length; i++) 
+        {
+			console.log('Image URI: ' + results[i]);
+		}
+	}, function (error) {
+		console.log('Error: ' + error);
+	}
+);
+
+		});
+        
+
+
 		 $("#add_inventory").submit(function(e){
+         
 			 $("#wek_form").hide();
 			 $("#my_daily").hide();
 			e.preventDefault();
@@ -718,7 +735,12 @@
 			var tk_pic = jQuery("#st_name").val();
 			var chs_pic = jQuery("#int_beon").val();
 			var use_email = jQuery('#use_mil').val();
-			$.ajax({
+            
+            
+            
+            
+            
+		 	$.ajax({
 				type: "POST",
 				url: "http://myonlinebrain.com.au/api.php",
 				data: {use_email: use_email,st_name : st_name,int_beon : int_beon,tk_pic : tk_pic,chs_pic : chs_pic,func:'Add'},
@@ -727,9 +749,7 @@
 				success: function(data){ 
 				  var json = $.parseJSON(data);
 				  alert("Inventory Add Successfully"); 
-				  /*$('#ck_invent').show();
-				  $('.add_invt').hide();*/
-			    },
+			   },
 				error: function (data) {
 					alert("Failure");
 				} 
@@ -1196,6 +1216,6 @@ function Myfunction(idl){
         }
 
 
-	}
+	}    
 })();
 
