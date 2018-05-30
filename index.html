@@ -42,6 +42,25 @@
     // Wait for device API libraries to load
     //
     document.addEventListener("deviceready",onDeviceReady,false);
+    
+    
+    function openFilePicker(selection) {
+
+    var srcType = Camera.PictureSourceType.SAVEDPHOTOALBUM;
+    var options = setOptions(srcType);
+    var func = createNewFileEntry;
+
+    navigator.camera.getPicture(function cameraSuccess(imageUri) {
+
+        // Do something
+
+    }, function cameraError(error) {
+        console.debug("Unable to obtain picture: " + error, "app");
+
+    }, options);
+}
+
+
 
     // device APIs are available
     //
@@ -304,7 +323,9 @@
                 <button onclick="capturePhoto();">Capture Photo</button> <br><br>
     <button onclick="capturePhotoEdit();">Capture Editable Photo</button> <br><br>
     <button onclick="getPhoto(pictureSource.PHOTOLIBRARY);">From Photo Library</button><br><br>
-    <button onclick="getPhoto(pictureSource.SAVEDPHOTOALBUM);">From Photo Album</button><br><br>
+    
+    <button onclick="openFilePicker(pictureSource.SAVEDPHOTOALBUM);">From Photo Album</button><br><br>
+    
     <img style="display:none;width:60px;height:60px;" id="smallImage" src="" /><br><br>
     <img style="display:none;" id="largeImage" src="" />
     
