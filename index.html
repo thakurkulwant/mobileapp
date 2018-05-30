@@ -33,7 +33,106 @@
 
 	<!--------end---------->
     <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
-  
+     
+    <script type="text/javascript" charset="utf-8">
+
+    var pictureSource;   // picture source
+    var destinationType; // sets the format of returned value
+
+    // Wait for device API libraries to load
+    //
+    document.addEventListener("deviceready",onDeviceReady,false);  
+
+    // device APIs are available
+    //
+    
+    function onDeviceReady() {
+        alert('12122212');
+        pictureSource=navigator.camera.PictureSourceType;
+        destinationType=navigator.camera.DestinationType;
+    }
+
+    // Called when a photo is successfully retrieved
+    //
+    function onPhotoDataSuccess(imageData) {
+        alert('0000000');
+      // Uncomment to view the base64-encoded image data
+      // console.log(imageData);
+
+      // Get image handle
+      //
+      var smallImage = document.getElementById('smallImage');
+
+      // Unhide image elements
+      //
+      smallImage.style.display = 'block';
+
+      // Show the captured photo
+      // The in-line CSS rules are used to resize the image
+      //
+      smallImage.src = "data:image/jpeg;base64," + imageData;
+    }
+
+    // Called when a photo is successfully retrieved
+    //
+    function onPhotoURISuccess(imageURI) {
+        alert('11111111');
+      // Uncomment to view the image file URI
+      // console.log(imageURI);
+
+      // Get image handle
+      //
+      var largeImage = document.getElementById('largeImage');
+
+      // Unhide image elements
+      //
+      largeImage.style.display = 'block';
+
+      // Show the captured photo
+      // The in-line CSS rules are used to resize the image
+      //
+      largeImage.src = imageURI;
+    }
+
+    // A button will call this function
+    //
+    function capturePhoto() {
+        alert('222222');
+      // Take picture using device camera and retrieve image as base64-encoded string
+      navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality: 50,
+        destinationType: destinationType.DATA_URL });
+    }
+
+    // A button will call this function
+    //
+    function capturePhotoEdit() {
+        alert('3333333');
+      // Take picture using device camera, allow edit, and retrieve image as base64-encoded string
+      navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality: 20, allowEdit: true,
+        destinationType: destinationType.DATA_URL });
+    }
+
+    // A button will call this function
+    //
+    function getPhoto(source) {
+    
+    alert('444444');
+      // Retrieve image file location from specified source
+      navigator.camera.getPicture(onPhotoURISuccess, onFail, { quality: 50,
+        destinationType: destinationType.FILE_URI,
+        sourceType: source });
+    }
+
+    // Called if something bad happens.
+    //
+    function onFail(message) {
+    
+      alert('Failed because: ' + message);
+    }
+
+    </script>
+    
+                                                                                 
 	<script type="text/javascript">
 		if (window.hyper) { console.log = hyper.log; }
 	</script>
@@ -211,8 +310,15 @@
 			<!-- Add inventory form-->
 			<div class="add_invt">
             
-       
-				<form id="add_inventory" class="form-horizontal" role="form">
+                <button onclick="capturePhoto();">Capture Photo</button> <br><br>
+    <button onclick="capturePhotoEdit();">Capture Editable Photo</button> <br><br>
+    <button onclick="getPhoto(pictureSource.PHOTOLIBRARY);">From Photo Library</button><br><br>
+    <button onclick="getPhoto(pictureSource.SAVEDPHOTOALBUM);">From Photo Album</button><br><br>      
+    <img style="display:none;width:60px;height:60px;" id="smallImage" src="" /><br><br>
+    <img style="display:none;" id="largeImage" src="" />
+    
+    
+				<!---form id="add_inventory" class="form-horizontal" role="form">
 					<div class="col-sm-12">
 						<div class="col-sm-12 col-xs-12 control_fld">
 							<div class="nme_fld crp_img">
@@ -247,7 +353,7 @@
 							</div>
 						</div>
 					</div>
-				</form>
+				</form--->
 			</div>
 			<!-- end -->
 			<!-- Add inventory-->
